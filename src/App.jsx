@@ -1,12 +1,14 @@
-import './App.css'
-import Example from './components/Example/Example'
+import { styled } from 'styled-components';
+import Game from './components/Tictactoe/Game';
+
+const Container = styled.div``;
 
 function App() {
     return (
-        <>
-            <Example />
-        </>
-    )
+        <div className="container lg mx-auto ">
+            <Game />
+        </div>
+    );
 }
 
-export default App
+export default App;
