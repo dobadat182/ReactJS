@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import Board from './Board';
 import { CalculateWinner } from './helpers';
 import Modal from './Modal';
 
+const initialState = {
+    board: Array(9).fill(null),
+    xIsNext: true,
+};
+
 const Game = () => {
     const [board, setBoard] = useState(Array(9).fill(null));
     const [xIsNext, setXIsNext] = useState(true);
+
     const winner = CalculateWinner(board);
 
     const handleClick = (index) => {
@@ -14,7 +20,6 @@ const Game = () => {
         if (winner || boardDuplicate[index]) return;
 
         boardDuplicate[index] = xIsNext ? 'X' : 'O';
-
         setBoard(boardDuplicate);
         setXIsNext((xIsNext) => !xIsNext);
     };
@@ -26,7 +31,7 @@ const Game = () => {
 
     return (
         <>
-            {winner ? <Modal /> : ''}
+            {winner && <Modal />}
 
             <Board cells={board} onClick={handleClick}></Board>
 
