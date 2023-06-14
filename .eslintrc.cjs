@@ -20,6 +20,7 @@ module.exports = {
     },
     plugins: ['react-refresh'],
     rules: {
+        'react/prop-types': 'off',
         'react-refresh/only-export-components': 'warn',
         'no-unused-vars': [
             'error',

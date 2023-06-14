@@ -1,28 +1,11 @@
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
-import React, { useEffect, useRef, useState } from 'react';
+import useClickOut from '../../../hooks/useClickOut';
 
 const DropDown = () => {
-    const [show, setShow] = useState(false);
-    const dropdownRef = useRef(null);
-
-    useEffect(() => {
-        const handleClickOutSide = (e) => {
-            if (
-                dropdownRef.current &&
-                !dropdownRef.current.contains(e.target)
-            ) {
-                setShow(false);
-            }
-        };
-        document.addEventListener('click', handleClickOutSide);
-
-        return () => {
-            document.removeEventListener('click', handleClickOutSide);
-        };
-    }, []);
+    const { show, setShow, nodeRef } = useClickOut();
 
     return (
-        <div className="relative w-full max-w-[300px]" ref={dropdownRef}>
+        <div className="relative w-full max-w-[300px]" ref={nodeRef}>
             <div
                 className="p-5 border border-gray-200 rounded-lg w-full cursor-pointer hover:bg-gray-100 flex items-center justify-between transition-all duration-1000"
                 onClick={() => setShow(!show)}
