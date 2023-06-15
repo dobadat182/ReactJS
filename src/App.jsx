@@ -1,13 +1,11 @@
-import { styled } from 'styled-components';
-import MovieSearchApp from './components/MovieSearch/MovieSearchApp';
-
-const Container = styled.div``;
+import SignupForm from './components/Form/Formik/SignupForm/SignupForm';
 
 function App() {
     return (
-        <div className="container lg mx-auto h-screen flex my-10">
-            <MovieSearchApp />
-        </div>
+        <>
+            <SignupForm />
+            {/* <div className="container lg mx-auto h-screen flex items-center justify-center my-10"></div> */}
+        </>
     );
 }
 
